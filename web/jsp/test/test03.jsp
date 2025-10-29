@@ -20,7 +20,7 @@
         reNow = formatter.format(now);
     }
 %>
-<html>
+<html lang="ko">
     <head>
         <title>현재<%= title %></title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
@@ -29,6 +29,5 @@
         <div class="container">
             <div class="display-2">현재<%= title %> <%= reNow %></div>
         </div>
-
     </body>
 </html>
