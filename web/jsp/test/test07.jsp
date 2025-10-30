@@ -32,14 +32,43 @@
         %>
 
         <div class="container">
-            <table class="table">
+            <table class="table text-center">
                 <tr>
                     <th>메뉴</th>
                     <th>상호</th>
                     <th>별점</th>
                 </tr>
                 <%
-                    
+                    for(Map foods : list)
+                    {
+                        if(exception != null)
+                        {
+                            double star = (double)foods.get("point");
+                            if(foods.get("menu").equals(keyword) && star >= 4.0)
+                            {
+                                %>
+                                <tr>
+                                    <td><%= foods.get("menu") %></td>
+                                    <td><%= foods.get("name") %></td>
+                                    <td><%= foods.get("point") %></td>
+                                </tr>
+                                <%
+                            }
+                        } else
+                        {
+                            if(foods.get("menu").equals(keyword))
+                            {
+                                %>
+                                <tr>
+                                    <td><%= foods.get("menu") %></td>
+                                    <td><%= foods.get("name") %></td>
+                                    <td><%= foods.get("point") %></td>
+                                </tr>
+                                <%
+                            }
+                        }
+
+                    }
                 %>
             </table>
         </div>
