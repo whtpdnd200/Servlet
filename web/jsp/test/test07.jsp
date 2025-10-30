@@ -29,6 +29,11 @@
 
             String keyword = request.getParameter("keyword");
             String exception = request.getParameter("exception");
+            double exceptionPoint = 0;
+            if(exception != null)
+            {
+                exceptionPoint = 4.0;
+            }
         %>
 
         <div class="container">
@@ -41,33 +46,18 @@
                 <%
                     for(Map foods : list)
                     {
-                        if(exception != null)
+                        double star = (double)foods.get("point");
+                        String menu = String.valueOf(foods.get("menu"));
+                        if(menu.equals(keyword) && star >= exceptionPoint)
                         {
-                            double star = (double)foods.get("point");
-                            if(foods.get("menu").equals(keyword) && star >= 4.0)
-                            {
-                                %>
-                                <tr>
-                                    <td><%= foods.get("menu") %></td>
-                                    <td><%= foods.get("name") %></td>
-                                    <td><%= foods.get("point") %></td>
-                                </tr>
-                                <%
-                            }
-                        } else
-                        {
-                            if(foods.get("menu").equals(keyword))
-                            {
-                                %>
-                                <tr>
-                                    <td><%= foods.get("menu") %></td>
-                                    <td><%= foods.get("name") %></td>
-                                    <td><%= foods.get("point") %></td>
-                                </tr>
-                                <%
-                            }
+                            %>
+                            <tr>
+                                <td><%= foods.get("menu") %></td>
+                                <td><%= foods.get("name") %></td>
+                                <td><%= foods.get("point") %></td>
+                            </tr>
+                            <%
                         }
-
                     }
                 %>
             </table>
