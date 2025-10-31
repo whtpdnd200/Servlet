@@ -8,7 +8,7 @@
     <body>
         <div class="container">
             <h4>메뉴 검색</h4>
-            <form method="post" action="/jsp/test/test07.jsp">
+            <form method="get" action="/jsp/test/test07.jsp">
                 <div class="d-flex align-items-end">
                     <input class="form-control mr-2 col-2" type="text" name="keyword">
                     <label><input type="checkbox" name="exception">4점 이하 제외</label>

@@ -38,13 +38,16 @@
 
         <div class="container">
             <table class="table text-center">
-                <tr>
-                    <th>메뉴</th>
-                    <th>상호</th>
-                    <th>별점</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>메뉴</th>
+                        <th>상호</th>
+                        <th>별점</th>
+                    </tr>
+                </thead>
+                <tbody>
                 <%
-                    for(Map foods : list)
+                    for(Map<String, Object> foods : list)
                     {
                         double star = (double)foods.get("point");
                         String menu = String.valueOf(foods.get("menu"));
@@ -60,6 +63,7 @@
                         }
                     }
                 %>
+                </tbody>
             </table>
         </div>
     </body>

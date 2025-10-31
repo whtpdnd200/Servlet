@@ -14,24 +14,28 @@
             });
         %>
         <div class="container">
+            <h2 class="text-center">장목록</h2>
             <table class="table text-center">
-                <tr>
-                    <th>번호</th>
-                    <th>품목</th>
-                        <%
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>품목</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <%
                     for(int i = 0; i < goodsList.size(); i++)
                     {
-                        %>
-                        <tr>
-                            <td><%= i + 1 %></td>
-                            <td><%= goodsList.get(i) %></td>
-                        </tr>
-                        <%
+                %>
+                <tr>
+                    <td><%= i + 1 %></td>
+                    <td><%= goodsList.get(i) %></td>
+                </tr>
+                <%
                     }
                 %>
-                </tr>
+                </tbody>
             </table>
         </div>
-
     </body>
 </html>
