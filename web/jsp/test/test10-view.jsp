@@ -85,6 +85,7 @@
         if(info.get("title").equals(title))
         {
             music = info;
+            break;
         }
     }
 
@@ -94,22 +95,24 @@
 %>
 <html lang="ko">
     <head>
-        <title>Title</title>
+        <title><%= music.get("title") %></title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
               integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     </head>
     <body>
     <div class="container">
         <header>
-            <div class="d-flex">
-                <h3 class="text-success mr-5">Melong</h3>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control col-3" name="title">
-                    <div class="input-group-append">
-                        <button class="btn btn-info" type="submit">검색</button>
+            <form method="get" action="/jsp/test/test10-view.jsp">
+                <div class="d-flex">
+                    <h3 class="text-success mr-5">Melong</h3>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control col-3" name="title">
+                        <div class="input-group-append">
+                            <button class="btn btn-info" type="submit">검색</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </header>
         <nav>
             <ul class="nav">
@@ -124,18 +127,17 @@
             <div class="mt-3">
                 <h4>곡 정보</h4>
             </div>
-
             <div class="d-flex border border-success p-3">
                 <div>
-                    <img width="150px" height="150px" alt="<%= music.get("thumbnail") %>" src="<%= music.get("thumbnail") %>">
+                    <img width="200px" height="200px" alt="<%= music.get("thumbnail") %>" src="<%= music.get("thumbnail") %>">
                 </div>
                 <div class="ml-4">
                     <div class="display-4"><%= music.get("title") %></div>
                     <div class="text-success"><h4><%= music.get("singer") %></h4></div>
-                    <div>앨범 <%= music.get("album") %></div>
-                    <div>재생 시간 <%= min %> : <%= sec %></div>
-                    <div>작곡가 <%= music.get("composer") %></div>
-                    <div>작사가 <%= music.get("lyricist") %></div>
+                    <div>앨범 <span class="ml-5"><%= music.get("album") %></span></div>
+                    <div>재생 시간 <span class="ml-4"><%= min %> : <%= sec %></span></div>
+                    <div>작곡가 <span class="ml-4"><%= music.get("composer") %></span></div>
+                    <div>작사가 <span class="ml-4"><%= music.get("lyricist") %></span></div>
                 </div>
             </div>
         </section>
