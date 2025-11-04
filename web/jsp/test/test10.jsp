@@ -89,8 +89,10 @@
             <header>
                 <form method="get" action="/jsp/test/test10-view.jsp">
                 <div class="d-flex">
-                    <h3 class="text-success mr-5">Melong</h3>
-                    <div class="input-group mb-3">
+                    <div class="mr-5 d-flex align-items-center">
+                        <h3 class="text-success">Melong</h3>
+                    </div>
+                    <div class="input-group d-flex align-items-center">
                         <input type="text" class="form-control col-3" name="title">
                         <div class="input-group-append">
                             <button class="btn btn-info" type="submit">검색</button>
@@ -100,53 +102,55 @@
                 </form>
             </header>
             <nav>
-                <ul class="nav">
-                    <li class="nav-item"><a class="nav-link text-dark font-weight-bold" href="#">멜롱챠트</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark font-weight-bold" href="#">최신음악</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark font-weight-bold" href="#">장르음악</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark font-weight-bold" href="#">멜롱DJ</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark font-weight-bold" href="#">뮤직어워드</a></li>
+                <ul class="nav font-weight-bold">
+                    <li class="nav-item"><a class="nav-link text-dark" href="#">멜롱챠트</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#">최신음악</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#">장르음악</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#">멜롱DJ</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#">뮤직어워드</a></li>
                 </ul>
             </nav>
             <section>
-                <div class="d-flex border border-success p-3">
+                <div class="artist d-flex border border-success p-3">
                     <div>
                         <img width="150px" height="150px" alt="<%= artistInfo.get("name") %>" src="<%= artistInfo.get("photo") %>">
                     </div>
                     <div class="ml-4">
                         <div><h4><%= artistInfo.get("name") %></h4></div>
                         <div><%= artistInfo.get("agency") %></div>
-                        <div><%= artistInfo.get("debute") %> 데뷔</div>
+                        <div><%= artistInfo.get("debute") %>년 데뷔</div>
                     </div>
                 </div>
             </section>
             <section>
-                <div class="mt-2">
-                    <h3>곡 목록</h3>
-                </div>
-                <table class="table text-center">
-                    <thead>
-                        <tr>
-                            <th>no</th>
-                            <th>제목</th>
-                            <th>앨범</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div class="song-list mt-3">
+                    <div>
+                        <h3>곡 목록</h3>
+                    </div>
+                    <table class="table table-sm text-center">
+                        <thead>
+                            <tr>
+                                <th>no</th>
+                                <th>제목</th>
+                                <th>앨범</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                         <%
                             for(Map<String, Object> music : musicList)
                             {
-                                %>
-                                <tr>
-                                    <td><%= music.get("id") %></td>
-                                    <td><a href="/jsp/test/test10-view.jsp?title=<%= music.get("title") %>"><%= music.get("title") %></a></td>
-                                    <td><%= music.get("album") %></td>
-                                </tr>
-                                <%
+                            %>
+                            <tr>
+                                <td><%= music.get("id") %></td>
+                                <td><a href="/jsp/test/test10-view.jsp?id=<%= music.get("id") %>"><%= music.get("title") %></a></td>
+                                <td><%= music.get("album") %></td>
+                            </tr>
+                            <%
                             }
-                        %>
-                    </tbody>
-                </table>
+                            %>
+                        </tbody>
+                    </table>
+                </div>
             </section>
             <footer>
                 <div class="text-secondary">

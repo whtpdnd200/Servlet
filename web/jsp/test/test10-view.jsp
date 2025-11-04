@@ -79,15 +79,21 @@
     musicList.add(musicInfo);
 
     String title = request.getParameter("title");
+    int id = -1;
+    if(request.getParameter("id") != null)
+    {
+        id = Integer.parseInt(request.getParameter("id"));
+    }
     Map<String, Object> music = null;
     for(Map<String, Object> info : musicList)
     {
-        if(info.get("title").equals(title))
+        if((title != null && info.get("title").equals(title)) || ( id != -1 && (int)info.get("id") == id))
         {
             music = info;
             break;
         }
     }
+
 
     int min = (int)music.get("time") / 60;
     int sec = (int)music.get("time") % 60;
@@ -115,7 +121,7 @@
             </form>
         </header>
         <nav>
-            <ul class="nav">
+            <ul class="nav font-weight-bole">
                 <li class="nav-item"><a class="nav-link text-dark" href="#">멜롱챠트</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="#">최신음악</a></li>
                 <li class="nav-item"><a class="nav-link text-dark" href="#">장르음악</a></li>
@@ -134,8 +140,8 @@
                 <div class="ml-4">
                     <div class="display-4"><%= music.get("title") %></div>
                     <div class="text-success"><h4><%= music.get("singer") %></h4></div>
-                    <div>앨범 <span class="ml-5"><%= music.get("album") %></span></div>
-                    <div>재생 시간 <span class="ml-4"><%= min %> : <%= sec %></span></div>
+                    <div>앨범 <span class="ml-4"><%= music.get("album") %></span></div>
+                    <div>재생시간 <span class="ml-2"><%= min %> : <%= sec %></span></div>
                     <div>작곡가 <span class="ml-4"><%= music.get("composer") %></span></div>
                     <div>작사가 <span class="ml-4"><%= music.get("lyricist") %></span></div>
                 </div>
