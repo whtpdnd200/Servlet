@@ -5,7 +5,25 @@ import java.util.*;
 
 public class MysqlService {
 
+    // Design pattern
+    // Singleton pattern : 클래스 내에서 하나의 객체만 생성하고 이를 활용하도록 제한
+
+    // static 변수 : 객체 생성 없이 사용 할 수 있는 멤버 변수
+    private static MysqlService mysqlService = null;
+
     private Connection connection;
+
+    // 해당 클래스 객체를 사용할 수 있도록 return 해주는 메서드
+    // 객체를 사용하는 쪽에서 생성자 대신 활용
+    // static 메서드 : 객체 생성 없이 호출 할 수 있는 메서드
+    public static MysqlService getInstance()
+    {
+        if(mysqlService == null)
+        {
+            mysqlService = new MysqlService();
+        }
+        return mysqlService;
+    }
 
     // 접속하기
     public boolean connect()
@@ -38,7 +56,7 @@ public class MysqlService {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
-            // 조회 결과 컬럼 목록
+            // 조회 결과 컬럼(키) 목록
             ResultSetMetaData rsmd = resultSet.getMetaData();
 
             // 컬럼 개수 얻어오기

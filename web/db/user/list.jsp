@@ -11,11 +11,13 @@
     </head>
     <body>
     <%
-        MysqlService mysqlService = new MysqlService();
+        MysqlService mysqlService = MysqlService.getInstance();
 
         mysqlService.connect();
 
-        List<Map<String, Object>> userList = mysqlService.select("SELECT `name`, `email`, `dream_job` FROM `new_student`;");
+        List<Map<String, Object>> userList = mysqlService.select("SELECT `name`, `email`, `introduce` FROM `new_user`;");
+
+        mysqlService.disconnect();
     %>
         <h3>사용자 리스트</h3>
         <table border="1">
@@ -34,7 +36,7 @@
                 <tr>
                     <td><%= user.get("name") %></td>
                     <td><%= user.get("email") %></td>
-                    <td><%= user.get("dream_job") %></td>
+                    <td><%= user.get("introduce") %></td>
                 </tr>
                     <%
                 }

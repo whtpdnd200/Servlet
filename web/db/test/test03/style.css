@@ -1,0 +1,50 @@
+#wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+header {
+    height: 150px;
+    background-color: coral;
+}
+
+header > .logo {
+
+}
+
+header > .main-menu {
+    font-size: 20px;
+}
+
+section {
+
+}
+
+.info {
+    width: 380px;
+
+    border: solid 2px coral;
+}
+
+.image-alt {
+    width: 350px;
+    height: 240px;
+    font-size: 25px;
+    align-content: center;
+}
+
+.info:hover {
+    background-color: aqua;
+}
+
+.goods-title {
+    font-size: 15px;
+}
+
+.seller-name {
+    color: coral;
+}
+
+footer {
+    height: 100px;
+}
