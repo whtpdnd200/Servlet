@@ -30,7 +30,7 @@
                 </div>
                 <nav class="main-menu font-weight-bold mt-3">
                     <ul class="nav nav-fill">
-                        <li class="nav-item"><a class="nav-link text-light" href="#">리스트</a></li>
+                        <li class="nav-item"><a class="nav-link text-light" href="/db/test/test03/market.jsp">리스트</a></li>
                         <li class="nav-item"><a class="nav-link text-light" href="#">물건올리기</a></li>
                         <li class="nav-item"><a class="nav-link text-light" href="#">마이페이지</a></li>
                     </ul>
