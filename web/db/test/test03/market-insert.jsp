@@ -1,7 +1,8 @@
 <%@ page import="com.marondal.common.MysqlService" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.Map" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"
+         pageEncoding="UTF-8"%>
 <html lang="ko">
     <head>
         <title>상품 등록</title>
@@ -35,10 +36,10 @@
             <section class="">
                 <div class="">
                     <h2>물건 올리기</h2>
-                    <form method="post" action="/db/market/insert">
+                    <form id="form" method="post" action="/db/market/insert">
                         <div class="d-flex justify-content-between">
                             <div class="col-3">
-                                <select class="form-control" name="id">
+                                <select class="form-control" id="id" name="id">
                                     <option value="empty">-아이디 선택-</option>
                                     <%
                                         for(Map<String, Object> user : userList)
@@ -56,7 +57,7 @@
                             </div>
                             <div>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" name="price">
+                                    <input id="price" type="text" class="form-control" name="price">
                                     <div class="input-group-append">
                                         <span class="input-group-text">원</span>
                                     </div>
@@ -64,9 +65,7 @@
                             </div>
                         </div>
                         <div class="my-3">
-                        <textarea rows="10" class="form-control" name="description">
-
-                        </textarea>
+                        <textarea rows="10" class="form-control" name="description"></textarea>
                         </div>
                         <div>
                             <div class="input-group">
@@ -77,7 +76,7 @@
                             </div>
                         </div>
                         <div class="my-3">
-                            <button class="btn btn-light btn-block text-dark font-weight-bold" type="button">저장</button>
+                            <button id="insert" class="btn btn-light btn-block text-dark font-weight-bold" type="submit">저장</button>
                         </div>
                     </form>
                 </div>
@@ -87,8 +86,29 @@
                     Copyright 2025. HONG All Rights Reserved.
                 </div>
             </footer>
+            <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
             <script>
+                $("#form").on("submit", function() {
 
+                   if($("#id").val() == "empty")
+                   {
+                       alert("작성자를 선택 해주세요");
+                       $("id").focus();
+                       return false;
+                   }
+                   if($("#title").val() == "")
+                   {
+                       alert("제목을 입력 해주세요");
+                       $("title").focus();
+                       return false;
+                   }
+                   if($("#price").val() == "")
+                   {
+                       alert("가격을 입력 해주세요");
+                       $("price").focus();
+                       return false;
+                   }
+                });
             </script>
         </div>
     </body>
