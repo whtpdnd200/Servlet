@@ -22,7 +22,7 @@ public class MarketInsertController extends HttpServlet {
         int price = Integer.parseInt(request.getParameter("price"));
         String description = request.getParameter("description");
         String image = request.getParameter("image");
-        if(image.equals(""))
+        if(image.isEmpty())
         {
             image = null;
         }
@@ -36,10 +36,10 @@ public class MarketInsertController extends HttpServlet {
                 "VALUE\n" +
                 "(" + id + ", '" + title + "', " + price + ", '" + description + "', '" + image + "');";
 
-        mysqlService.update(query);
+        //mysqlService.update(query);
         mysqlService.disconnect();
 
 
-        response.sendRedirect("/db/test/test03/market.jsp");
+        //response.sendRedirect("/db/test/test03/market.jsp");
     }
 }
