@@ -22,24 +22,33 @@ public class MarketInsertController extends HttpServlet {
         int price = Integer.parseInt(request.getParameter("price"));
         String description = request.getParameter("description");
         String image = request.getParameter("image");
+
+        String query = null;
+
         if(image.isEmpty())
         {
-            image = null;
+            query = "INSERT INTO `used_goods`\n" +
+                    "(`seller_id`, `title`, `price`, `description`)\n" +
+                    "VALUE\n" +
+                    "(" + id + ", '" + title + "', " + price + ", '" + description + "');";
+        } else
+        {
+            query = "INSERT INTO `used_goods`\n" +
+                    "(`seller_id`, `title`, `price`, `description`, `image`)\n" +
+                    "VALUE\n" +
+                    "(" + id + ", '" + title + "', " + price + ", '" + description + "', '" + image + "');";
         }
         
         MysqlService mysqlService = MysqlService.getInstance();
 
         mysqlService.connect();
 
-        String query = "INSERT INTO `used_goods`\n" +
-                "(`seller_id`, `title`, `price`, `description`, `image`)\n" +
-                "VALUE\n" +
-                "(" + id + ", '" + title + "', " + price + ", '" + description + "', '" + image + "');";
 
-        //mysqlService.update(query);
+
+        mysqlService.update(query);
         mysqlService.disconnect();
 
 
-        //response.sendRedirect("/db/test/test03/market.jsp");
+        response.sendRedirect("/db/test/test03/market.jsp");
     }
 }
